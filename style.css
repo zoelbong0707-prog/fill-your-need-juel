@@ -1,0 +1,131 @@
+:root {
+  color-scheme: light;
+  --ink: #202820;
+  --muted: #788078;
+  --green: #2f7452;
+  --green-dark: #235a3e;
+  --cream: #f5f4ef;
+  --line: #e8e9e3;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(ellipse at 50% 4%, rgba(226, 235, 219, .68), transparent 34rem),
+    var(--cream);
+  color: var(--ink);
+  font-family: "DM Sans", "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+
+.app-shell { width: min(100% - 40px, 720px); margin: 0 auto; padding: 28px 0 25px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; }
+.brand { display: inline-flex; align-items: center; gap: 9px; color: var(--ink); font-size: 19px; font-weight: 800; letter-spacing: -.8px; text-decoration: none; }
+.brand-mark { width: 25px; height: 25px; padding: 5px 4px; display: flex; justify-content: center; align-items: center; gap: 2px; border-radius: 8px; background: var(--green); }
+.brand-mark span { width: 2px; border-radius: 3px; background: white; }
+.brand-mark span:nth-child(1), .brand-mark span:nth-child(4) { height: 7px; }
+.brand-mark span:nth-child(2) { height: 13px; }
+.brand-mark span:nth-child(3) { height: 10px; }
+.local-badge { display: flex; align-items: center; gap: 7px; color: #777f76; font-size: 11px; font-weight: 600; }
+.local-badge span { width: 6px; height: 6px; border-radius: 50%; background: #65a578; box-shadow: 0 0 0 3px #65a57820; }
+
+.intro { padding: 47px 0 27px; text-align: center; }
+.eyebrow, .section-kicker { margin: 0; color: #819087; font-size: 9px; font-weight: 700; letter-spacing: 1.8px; }
+.intro h1 { margin: 12px 0 13px; font-family: "Noto Sans KR", sans-serif; font-size: clamp(29px, 5vw, 39px); line-height: 1.45; letter-spacing: -2px; font-weight: 700; }
+.intro h1 em { color: var(--green); font-style: normal; }
+.intro-copy { margin: 0; color: #777f77; font-family: "Noto Sans KR", sans-serif; font-size: 13px; line-height: 1.85; }
+.mobile-break { display: none; }
+
+.studio { overflow: hidden; border: 1px solid #e8e8e1; border-radius: 17px; background: #fff; box-shadow: 0 16px 50px #263b2510; }
+.studio-header { display: flex; align-items: center; justify-content: space-between; padding: 21px 26px 18px; border-bottom: 1px solid #f0f0eb; }
+.section-kicker { font-size: 8px; letter-spacing: 1.4px; }
+.studio-header h2, .editor-heading h3 { margin: 5px 0 0; font-family: "Noto Sans KR", sans-serif; font-size: 17px; letter-spacing: -.6px; }
+.recording-status { display: inline-flex; align-items: center; gap: 7px; color: #788078; font-size: 10px; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: #aab1a9; }
+.recording-status.is-recording { color: #c45047; }
+.recording-status.is-recording .status-dot { background: #e05e54; animation: blink 1.2s infinite; }
+@keyframes blink { 50% { opacity: .35; } }
+
+.recorder { display: flex; flex-direction: column; align-items: center; padding: 18px 20px 21px; }
+.timer { color: #26332b; font-variant-numeric: tabular-nums; font-size: 29px; font-weight: 600; letter-spacing: .5px; }
+.timer span { color: #a9b0a9; font-size: 17px; }
+.mic-orbit { position: relative; width: 112px; height: 112px; display: grid; place-items: center; margin: 8px 0 4px; }
+.mic-halo { position: absolute; inset: 5px; border: 1px solid #e2ece4; border-radius: 50%; box-shadow: 0 0 0 9px #f4f8f4; transition: .25s ease; }
+.mic-button { position: relative; width: 73px; height: 73px; display: grid; place-items: center; border-radius: 50%; background: #edf4ee; color: var(--green); }
+.mic-button svg { width: 31px; height: 31px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.mic-orbit.is-recording .mic-halo { border-color: #efc7c2; box-shadow: 0 0 0 9px #fff4f2, 0 0 0 19px #fff9f8; }
+.mic-orbit.is-recording .mic-button { color: #d75f53; background: #fff1ee; }
+.recorder-hint { margin: 1px 0 15px; color: #899087; font-size: 10px; }
+.record-actions { display: flex; gap: 8px; }
+.button { min-height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 17px; border: 0; border-radius: 8px; cursor: pointer; font-family: "Noto Sans KR", sans-serif; font-size: 11px; font-weight: 600; transition: background .18s ease, transform .18s ease, box-shadow .18s ease; }
+.button:focus-visible, input:focus-visible { outline: 3px solid #8eb89a; outline-offset: 3px; }
+.button:active:not(:disabled) { transform: translateY(1px); }
+.button:disabled { opacity: .42; cursor: not-allowed; }
+.button-record { min-width: 122px; color: white; background: var(--green); box-shadow: 0 4px 10px #2f74522a; }
+.button-record:hover:not(:disabled), .button-primary:hover:not(:disabled) { background: var(--green-dark); }
+.button-stop { color: #626a62; background: #f0f1ed; }
+.button-stop:hover:not(:disabled), .button-secondary:hover { background: #e5e9e3; }
+.record-icon { width: 9px; height: 9px; border-radius: 50%; background: #fff; }
+.stop-icon { width: 9px; height: 9px; border-radius: 2px; background: currentColor; }
+.permission-note { display: flex; align-items: center; gap: 5px; margin: 14px 0 0; color: #a0a69e; font-size: 9px; }
+.permission-note svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.editor { margin: 0 25px; padding: 19px 0 22px; border-top: 1px solid #eeeeea; }
+.editor-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.editor-heading h3 { font-size: 14px; }
+.duration-label { color: #919990; font-size: 10px; font-variant-numeric: tabular-nums; }
+.empty-editor { min-height: 95px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px dashed #e6e9e3; border-radius: 9px; background: #fbfcfa; }
+.empty-editor p { margin: 0; color: #9aa198; text-align: center; font-family: "Noto Sans KR", sans-serif; font-size: 10px; line-height: 1.7; }
+.empty-icon { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 7px; background: #eff4ef; color: #7d9a83; }
+.empty-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.is-empty .editor-heading { margin-bottom: 12px; }
+.waveform-wrap { position: relative; height: 78px; overflow: hidden; border-radius: 8px; background: #f5f8f4; }
+.waveform-wrap canvas { display: block; width: 100%; height: 100%; }
+.selection-line { position: absolute; inset: 0; pointer-events: none; border-right: 1px solid #3c825a; border-left: 1px solid #3c825a; background: #397c5110; }
+.trim-controls { padding: 12px 2px 6px; }
+.trim-labels { display: flex; justify-content: space-between; color: #929a91; font-size: 9px; }
+.trim-labels b { padding-left: 4px; color: #3c7652; font-size: 10px; font-variant-numeric: tabular-nums; }
+.range-wrap { position: relative; height: 24px; margin: 0 4px; }
+.range-wrap::before { position: absolute; top: 10px; right: 0; left: 0; height: 3px; border-radius: 3px; background: #e8ece6; content: ""; }
+.range-wrap input[type="range"] { position: absolute; top: 0; left: 0; width: 100%; height: 24px; margin: 0; appearance: none; background: transparent; pointer-events: none; }
+.range-wrap input[type="range"]::-webkit-slider-thumb { width: 13px; height: 13px; appearance: none; border: 2px solid white; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 1px var(--green); cursor: ew-resize; pointer-events: auto; }
+.range-wrap input[type="range"]::-moz-range-thumb { width: 9px; height: 9px; border: 2px solid white; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 1px var(--green); cursor: ew-resize; pointer-events: auto; }
+.trim-help { margin: 0; color: #a1a79f; font-size: 9px; }
+audio { width: 100%; height: 34px; margin: 7px 0 11px; }
+.editor-actions { display: flex; gap: 8px; }
+.button-secondary { color: #566157; background: #eff1ed; }
+.button-secondary svg, .button-primary svg, .button-share svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.button-secondary svg { fill: currentColor; stroke: none; }
+.button-primary { color: white; background: var(--green); }
+.share-area { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding: 13px 14px; border: 1px solid #e6eee6; border-radius: 9px; background: #f8faf7; }
+.share-copy { display: flex; flex-direction: column; gap: 4px; }
+.share-copy strong { font-family: "Noto Sans KR", sans-serif; font-size: 10px; font-weight: 600; }
+.share-copy span { color: #899188; font-size: 9px; }
+.button-share { flex-shrink: 0; min-height: 34px; padding: 0 12px; color: var(--green); border: 1px solid #dce8dd; background: white; font-size: 10px; }
+.button-share:hover { background: #f0f6f0; }
+.footer { padding-top: 20px; color: #a1a69f; text-align: center; font-size: 9px; }
+.footer span { color: #77877a; font-weight: 700; }
+.toast { position: fixed; right: 20px; bottom: 20px; left: 20px; z-index: 3; width: fit-content; max-width: min(420px, calc(100% - 40px)); margin: auto; padding: 12px 16px; transform: translateY(15px); border-radius: 9px; background: #25382b; box-shadow: 0 8px 24px #17251d30; color: #fff; font-family: "Noto Sans KR", sans-serif; font-size: 11px; line-height: 1.6; opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
+.toast.is-visible { transform: translateY(0); opacity: 1; }
+
+@media (max-width: 560px) {
+  .app-shell { width: min(100% - 28px, 480px); padding-top: 20px; }
+  .intro { padding: 39px 0 24px; }
+  .intro h1 { font-size: clamp(27px, 7.4vw, 34px); letter-spacing: -1.5px; }
+  .intro-copy { font-size: 12px; }
+  .mobile-break { display: block; }
+  .studio { border-radius: 14px; }
+  .studio-header { padding: 18px 18px 15px; }
+  .recorder { padding: 17px 14px 19px; }
+  .editor { margin: 0 17px; padding-top: 17px; }
+  .share-area { padding: 11px 10px; }
+  .share-copy strong { font-size: 9px; }
+  .share-copy span { max-width: 185px; font-size: 8px; }
+  .button-share { gap: 5px; padding: 0 9px; font-size: 9px; }
+}

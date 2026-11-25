@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f4ef">
+    <meta name="description" content="녹음하고 필요한 부분만 편집해 바로 공유하세요.">
+    <title>소리담 — 녹음하고, 다듬고, 공유하기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="소리담 홈">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span>소리담</span>
+        </a>
+        <span class="local-badge"><span></span> 내 기기에서 안전하게</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">YOUR VOICE, YOUR MOMENT</p>
+        <h1 id="page-title">기억하고 싶은 순간,<br><em>소리로 담아두세요.</em></h1>
+        <p class="intro-copy">녹음하고, 필요한 부분만 다듬어<br class="mobile-break"> 카톡이나 문자로 간편하게 공유해요.</p>
+      </section>
+
+      <section class="studio" aria-label="녹음 편집기">
+        <div class="studio-header">
+          <div>
+            <p class="section-kicker">RECORDING STUDIO</p>
+            <h2>새로운 녹음</h2>
+          </div>
+          <span class="recording-status" id="status"><span class="status-dot"></span><span id="status-text">준비됐어요</span></span>
+        </div>
+
+        <div class="recorder">
+          <div class="timer" id="timer" aria-live="off">00:00<span>.00</span></div>
+          <div class="mic-orbit" id="mic-orbit" aria-hidden="true">
+            <div class="mic-halo"></div>
+            <div class="mic-button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"></rect><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3m-4 0h8"></path></svg></div>
+          </div>
+          <p class="recorder-hint" id="recorder-hint">마이크 버튼을 눌러 녹음을 시작하세요</p>
+          <div class="record-actions">
+            <button class="button button-record" id="record-button" type="button"><span class="record-icon"></span><span>녹음 시작</span></button>
+            <button class="button button-stop" id="stop-button" type="button" disabled><span class="stop-icon"></span>녹음 완료</button>
+          </div>
+          <p class="permission-note"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.8 13 4v3.4c0 3-2 5.5-5 6.8-3-1.3-5-3.8-5-6.8V4l5-2.2Z"></path><path d="m5.8 7.8 1.5 1.5 3-3"></path></svg>녹음 파일은 이 기기에만 저장돼요</p>
+        </div>
+
+        <section class="editor is-empty" id="editor" aria-labelledby="editor-title">
+          <div class="editor-heading">
+            <div>
+              <p class="section-kicker">EDIT & SHARE</p>
+              <h3 id="editor-title">녹음 편집</h3>
+            </div>
+            <span class="duration-label" id="duration-label">00:00</span>
+          </div>
+
+          <div class="empty-editor" id="empty-editor">
+            <div class="empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h3l2-6 4 12 2-6h5"></path></svg></div>
+            <p>녹음을 마치면 여기서 들어보고<br>원하는 구간만 잘라낼 수 있어요.</p>
+          </div>
+
+          <div class="editor-content" id="editor-content" hidden>
+            <div class="waveform-wrap">
+              <canvas id="waveform" aria-label="녹음 파형"></canvas>
+              <div class="selection-line" id="selection-line" aria-hidden="true"></div>
+            </div>
+            <div class="trim-controls">
+              <div class="trim-labels"><span>시작 <b id="start-time">00:00</b></span><span>끝 <b id="end-time">00:00</b></span></div>
+              <div class="range-wrap">
+                <input id="start-range" aria-label="편집 시작 지점" type="range" min="0" max="1000" value="0">
+                <input id="end-range" aria-label="편집 끝 지점" type="range" min="0" max="1000" value="1000">
+              </div>
+              <p class="trim-help">양쪽 핸들을 움직여 남길 구간을 선택하세요</p>
+            </div>
+            <audio id="audio-player" controls preload="metadata"></audio>
+            <div class="editor-actions">
+              <button class="button button-secondary" id="preview-button" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 9 6-9 6V4Z"></path></svg>구간 미리듣기</button>
+              <button class="button button-primary" id="save-button" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9m-3-3 3 3 3-3M4 14v3h12v-3"></path></svg>편집본 저장</button>
+            </div>
+            <div class="share-area">
+              <div class="share-copy">
+                <strong>다듬은 녹음, 바로 보내기</strong>
+                <span>카카오톡이나 문자 앱을 선택해 공유하세요.</span>
+              </div>
+              <button class="button button-share" id="share-button" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="10" r="2"></circle><circle cx="15" cy="5" r="2"></circle><circle cx="15" cy="15" r="2"></circle><path d="m7 9 6-3m-6 5 6 3"></path></svg><span>공유하기</span></button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <footer class="footer"><span>소리담</span> · 설치 없이 바로 사용하는 무료 녹음 도구</footer>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
